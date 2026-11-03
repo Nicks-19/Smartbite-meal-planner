@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartBite Mini-Project Report | Nikita Sharad Pawar (202401100018)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 20mm 15mm 20mm 15mm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      font-size: 11pt;
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      border: 3px double #059669;
+      background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 50%, #f8fafc 100%);
+    }
+
+    .cover-header h3 {
+      font-size: 13pt;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #0f172a;
+      margin: 0 0 8px 0;
+    }
+
+    .cover-header p {
+      font-size: 10pt;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .cover-title-box {
+      margin: 40px 0;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      background-color: #059669;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 10pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .cover-title {
+      font-size: 26pt;
+      font-weight: 800;
+      color: #064e3b;
+      line-height: 1.2;
+      margin: 0 0 15px 0;
+    }
+
+    .cover-subtitle {
+      font-size: 13pt;
+      color: #334155;
+      font-weight: 500;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cover-meta {
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 450px;
+      margin: 0 auto;
+      text-align: left;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .cover-meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 10.5pt;
+    }
+
+    .cover-meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .cover-meta-label {
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .cover-meta-value {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .cover-footer {
+      font-size: 10pt;
+      color: #64748b;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4 {
+      color: #0f172a;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 18pt;
+      border-bottom: 2px solid #059669;
+      padding-bottom: 6px;
+      margin-top: 30px;
+      color: #065f46;
+    }
+
+    h2 {
+      font-size: 14pt;
+      color: #0f172a;
+      margin-top: 20px;
+    }
+
+    h3 {
+      font-size: 12pt;
+      color: #334155;
+    }
+
+    p {
+      margin: 0 0 12px 0;
+      text-align: justify;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 9.5pt;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    /* Callout & Code */
+    .callout {
+      background-color: #f0fdf4;
+      border-left: 4px solid #059669;
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 10pt;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 4px;
+    }
+
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+    }
+
+    code {
+      background-color: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+    }
+
+    pre {
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 14px 0;
+    }
+
+    /* Diagram Box */
+    .diagram-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      line-height: 1.4;
+      white-space: pre;
+    }
+
+    .badge-pass {
+      display: inline-block;
+      background-color: #10b981;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 8pt;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="cover-page page-break">
+    <div class="cover-header">
+      <h3>Academic Mini-Project Evaluation</h3>
+      <p>Department of Computer Science & Engineering</p>
+    </div>
+
+    <div class="cover-title-box">
+      <div class="cover-badge">Full-Stack Web Development Project</div>
+      <h1 class="cover-title">SmartBite: Smart Leftover Meal Planner & Zero-Waste Kitchen</h1>
+      <p class="cover-subtitle">
+        An individual full-stack web application leveraging rule-based leftover ingredient matching, weekly meal scheduling, and smart pantry inventory tracking to eliminate domestic food waste.
+      </p>
+    </div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Candidate Name:</span>
+        <span class="cover-meta-value">Nikita Sharad Pawar</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">PRN (Registration No.):</span>
+        <span class="cover-meta-value">202401100018</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Frontend Stack:</span>
+        <span class="cover-meta-value">React 18 + Vite + Tailwind CSS</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Backend Stack:</span>
+        <span class="cover-meta-value">Python (FastAPI) + RESTful APIs</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Database:</span>
+        <span class="cover-meta-value">SQLite 3 (Relational Schema)</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Validation Engine:</span>
+        <span class="cover-meta-value">Pydantic v2 (Server) + React State</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Total Marks:</span>
+        <span class="cover-meta-value">10 Marks</span>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <p>Academic Year: 2026 | Submission File: <strong>202401100018_Nikita_Sharad_Pawar_Project.pdf</strong></p>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS & ABSTRACT -->
+  <div class="page-break">
+    <h1>Executive Summary & Abstract</h1>
+    <p>
+      Food waste represents an enormous ecological and economic crisis globally. Household kitchens are responsible for over 60% of all edible food waste, throwing away millions of tons of cooked rice, rotis, leftover curries, stale bread, and near-expiry vegetables. The primary driver of this waste is not intentional neglect, but rather a lack of immediate recipe inspiration—individuals often do not know how to assemble simple, appetizing meals using only three or four mismatched leftover ingredients without making unnecessary grocery purchases.
+    </p>
+    <p>
+      To solve this real-world problem, <strong>SmartBite</strong> was engineered as an individual full-stack web application. The platform features an intelligent, multi-parameter <em>Leftover Matching Algorithm</em> that normalizes available leftovers, handles plurals and Indian/Continental culinary synonyms, distinguishes core ingredients from common pantry staples (such as cooking oil and salt), and calculates percentage match accuracy. In addition, the system provides a 7-day scheduled meal planner, a fridge/pantry inventory tracker with expiry risk indicators, a smart missing-grocery checklist with auto-population, and an environmental/cost-saving impact tracker.
+    </p>
+
+    <div class="callout">
+      <div class="callout-title">Key Academic Deliverables Accomplished:</div>
+      ✓ Complete full-stack implementation with React, FastAPI, and SQLite.<br>
+      ✓ Multi-tier client and server-side validation rejecting invalid data with HTTP 422.<br>
+      ✓ Relational database schema with 7 tables, foreign key cascades, and indexing.<br>
+      ✓ Standalone automated test suite passing 11 out of 11 tests (100% success rate).<br>
+      ✓ Single-click execution script (<code>run.bat</code>) and self-contained deployment packaging.
+    </div>
+
+    <h2>Table of Contents</h2>
+    <table>
+      <thead>
+        <tr><th>Chapter</th><th>Topic</th><th>Page</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Chapter 1</td><td>Problem Statement & Real-World Motivation</td><td>3</td></tr>
+        <tr><td>Chapter 2</td><td>Software Architecture & Tech Stack Selection</td><td>4</td></tr>
+        <tr><td>Chapter 3</td><td>Relational Database Design & Schema</td><td>5</td></tr>
+        <tr><td>Chapter 4</td><td>Input Validation & Security Architecture</td><td>6</td></tr>
+        <tr><td>Chapter 5</td><td>Major Modules & Leftover Matcher Algorithm</td><td>7</td></tr>
+        <tr><td>Chapter 6</td><td>REST API Specifications & Swagger Documentation</td><td>8</td></tr>
+        <tr><td>Chapter 7</td><td>Automated Testing & Experimental Verification</td><td>9</td></tr>
+        <tr><td>Chapter 8</td><td>Conclusion, Viva Preparation & Future Scope</td><td>10</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHAPTER 1: PROBLEM STATEMENT -->
+  <div class="page-break">
+    <h1>Chapter 1: Problem Statement & Real-World Motivation</h1>
+
+    <h2>1.1 The Global and Domestic Food Waste Crisis</h2>
+    <p>
+      According to the United Nations Environment Programme (UNEP) Food Waste Index Report, over <strong>1 billion tons of food</strong> is wasted annually across the globe, contributing to 8–10% of global greenhouse gas emissions (predominantly methane from anaerobic organic decomposition in landfills). In domestic households, consumer surveys indicate that the highest volume of discarded food consists of cooked surplus meals:
+    </p>
+    <ul>
+      <li><strong>Leftover Cooked Grains:</strong> Boiled white/brown rice, khichdi, and cooked pasta that dry out in the refrigerator.</li>
+      <li><strong>Surplus Cooked Dal & Curries:</strong> Dal tadka, sambar, and dry vegetable sabzis (paneer, aloo, mixed veg).</li>
+      <li><strong>Dry Flatbreads & Bakery:</strong> Day-old chapatis/rotis, bread crusts, and stale loaf slices.</li>
+      <li><strong>Perishable Produce:</strong> Softening tomatoes, single carrots, half-onions, and overripe bananas.</li>
+    </ul>
+
+    <h2>1.2 Root Cause Analysis</h2>
+    <p>
+      Traditional recipe platforms (such as generic cooking blogs and food apps) are structured around grocery shopping: they dictate an exhaustive list of 12–15 ingredients and expect the user to purchase missing specialty items. In contrast, when a working professional, student, or homemaker looks into their refrigerator at dinner time, they face the reverse problem:
+    </p>
+    <blockquote>
+      <em>"I already have a bowl of cooked rice, one onion, and two eggs. What can I cook immediately in 12 minutes without stepping out to the supermarket?"</em>
+    </blockquote>
+
+    <h2>1.3 Project Objectives</h2>
+    <ol>
+      <li><strong>Reverse Recipe Discovery:</strong> Allow users to enter 1 to N leftover ingredients and receive dynamically ranked recipe suggestions based on match percentage.</li>
+      <li><strong>Staple-Aware Matching:</strong> Differentiate critical main leftovers from universal kitchen staples (oil, salt, water, basic spices) so users are not penalized with low match scores.</li>
+      <li><strong>Preventative Planning:</strong> Provide a 7-Day Meal Scheduler so families can assign leftover transformations throughout the week.</li>
+      <li><strong>Smart Grocery Integration:</strong> Automatically transfer missing ingredients to a checklist so users buy only what is necessary.</li>
+      <li><strong>Tangible Impact Tracking:</strong> Quantify kg of food waste diverted and financial savings in INR to motivate sustainable household behavior.</li>
+    </ol>
+  </div>
+
+  <!-- CHAPTER 2: SOFTWARE ARCHITECTURE -->
+  <div class="page-break">
+    <h1>Chapter 2: Software Architecture & Tech Stack</h1>
+
+    <h2>2.1 High-Level Architecture Overview</h2>
+    <p>
+      SmartBite adopts a decoupled, modern three-tier full-stack architecture consisting of a responsive Single Page Application (SPA) client, a high-performance asynchronous REST API backend, and an embedded relational database.
+    </p>
+
+    <div class="diagram-box">
++-----------------------------------------------------------------------------------+
+|                            CLIENT TIER (React 18 + Vite)                          |
+|  - Leftover Matcher UI  - 7-Day Meal Calendar  - Pantry Manager  - Grocery List   |
+|  - Client-Side Form Validation (Length checks, duplicates, non-negative bounds)   |
++------------------------------------------+----------------------------------------+
+                                           | HTTP / JSON REST APIs
+                                           v
++-----------------------------------------------------------------------------------+
+|                        APPLICATION SERVER (Python FastAPI)                        |
+|  - Request Validation & Serialization (Pydantic v2 Models)                        |
+|  - Leftover Matching Engine (String normalization, synonym mapping, match %)      |
+|  - API Routers: /recipes, /meal-plan, /pantry, /grocery, /analytics               |
+|  - Interactive Swagger OpenAPI Documentation (/docs)                              |
++------------------------------------------+----------------------------------------+
+                                           | SQL Queries (ACID Transactions)
+                                           v
++-----------------------------------------------------------------------------------+
+|                            DATA TIER (SQLite 3 Relational)                        |
+|  - Tables: recipes, recipe_ingredients, recipe_steps, meal_plans, pantry, grocery  |
+|  - Foreign Key Cascading Deletes & B-Tree Performance Indexes                     |
++-----------------------------------------------------------------------------------+
+    </div>
+
+    <h2>2.2 Technology Stack Justification</h2>
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Selected Technology</th><th>Technical Justification</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Frontend</strong></td>
+          <td>React 18 + Vite 5</td>
+          <td>Lightning-fast Hot Module Replacement (HMR), declarative component tree, reactive state updates, and efficient virtual DOM diffing.</td>
+        </tr>
+        <tr>
+          <td><strong>UI Styling</strong></td>
+          <td>Tailwind CSS</td>
+          <td>Utility-first CSS yielding ultra-compact production bundles, clean responsive grid layouts, and glassmorphic modal overlays.</td>
+        </tr>
+        <tr>
+          <td><strong>Backend</strong></td>
+          <td>Python 3.12 + FastAPI</td>
+          <td>Native Python async/await concurrency, automatic OpenAPI Swagger schema generation, and high throughput on Uvicorn ASGI server.</td>
+        </tr>
+        <tr>
+          <td><strong>Database</strong></td>
+          <td>SQLite 3</td>
+          <td>Zero external server configuration required for examiners. File-backed, serverless, transactional ACID compliance with foreign key constraints.</td>
+        </tr>
+        <tr>
+          <td><strong>Validation</strong></td>
+          <td>Pydantic v2</td>
+          <td>Strict typing, field range enforcement (<code>ge=1</code>, <code>min_length</code>), string stripping, and HTTP 422 error payloads.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHAPTER 3: DATABASE DESIGN -->
+  <div class="page-break">
+    <h1>Chapter 3: Relational Database Design</h1>
+
+    <h2>3.1 Entity Relationship Overview</h2>
+    <p>
+      The persistence layer is structured using normalized relational principles (3NF). SQLite foreign keys are explicitly enforced via <code>PRAGMA foreign_keys = ON;</code> to prevent orphaned child records upon recipe deletion.
+    </p>
+
+    <h2>3.2 Database Table Specifications</h2>
+
+    <h3>1. `recipes` (Master Recipe Entity)</h3>
+    <table>
+      <thead><tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>id</td><td>INTEGER</td><td>PRIMARY KEY AUTOINCREMENT</td><td>Unique recipe identifier</td></tr>
+        <tr><td>title</td><td>TEXT</td><td>NOT NULL</td><td>Recipe title (e.g., Indo-Chinese Fried Rice)</td></tr>
+        <tr><td>description</td><td>TEXT</td><td>NOT NULL</td><td>Brief description and leftover repurposing concept</td></tr>
+        <tr><td>category</td><td>TEXT</td><td>NOT NULL</td><td>Category (Leftover Rice, Leftover Dal, etc.)</td></tr>
+        <tr><td>cuisine</td><td>TEXT</td><td>NOT NULL</td><td>Cuisine style (Indian, Asian, Fusion)</td></tr>
+        <tr><td>prep_time</td><td>INTEGER</td><td>NOT NULL CHECK(prep_time >= 0)</td><td>Preparation time in minutes</td></tr>
+        <tr><td>cook_time</td><td>INTEGER</td><td>NOT NULL CHECK(cook_time >= 0)</td><td>Cooking time in minutes</td></tr>
+        <tr><td>servings</td><td>INTEGER</td><td>NOT NULL CHECK(servings > 0)</td><td>Portion count</td></tr>
+        <tr><td>difficulty</td><td>TEXT</td><td>CHECK(difficulty IN ('Easy','Medium','Hard'))</td><td>Skill requirement</td></tr>
+        <tr><td>dietary</td><td>TEXT</td><td>NOT NULL</td><td>Dietary preference (Vegetarian, Eggitarian, etc.)</td></tr>
+        <tr><td>calories</td><td>INTEGER</td><td>DEFAULT 0</td><td>Nutritional estimate per serving</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2. `recipe_ingredients` (Child Table)</h3>
+    <table>
+      <thead><tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>id</td><td>INTEGER</td><td>PRIMARY KEY AUTOINCREMENT</td><td>Ingredient entry ID</td></tr>
+        <tr><td>recipe_id</td><td>INTEGER</td><td>FOREIGN KEY -> recipes(id) ON DELETE CASCADE</td><td>Parent recipe reference</td></tr>
+        <tr><td>name</td><td>TEXT</td><td>NOT NULL (lowercase)</td><td>Normalized ingredient name</td></tr>
+        <tr><td>quantity</td><td>TEXT</td><td>NOT NULL</td><td>Portion measurement (e.g., "2")</td></tr>
+        <tr><td>unit</td><td>TEXT</td><td>NOT NULL</td><td>Unit of measure (e.g., "cups", "tbsp")</td></tr>
+        <tr><td>is_staple</td><td>BOOLEAN</td><td>DEFAULT 0</td><td>Flag for universal pantry items (salt, oil)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>3. Auxiliary Relational Tables</h3>
+    <ul>
+      <li><strong>`recipe_steps`:</strong> Holds sequential cooking instructions linked to <code>recipe_id</code> with <code>step_number</code>.</li>
+      <li><strong>`pantry_items`:</strong> Tracks user's current fridge leftovers with <code>expiry_days</code> and <code>category</code>.</li>
+      <li><strong>`meal_plans`:</strong> 7-Day calendar linking <code>recipe_id</code> to <code>day_of_week</code> and <code>meal_type</code>.</li>
+      <li><strong>`grocery_items`:</strong> Shopping list with <code>is_bought</code> boolean status.</li>
+      <li><strong>`waste_logs`:</strong> Records <code>food_saved_kg</code> and <code>money_saved_inr</code> for every meal cooked.</li>
+    </ul>
+  </div>
+
+  <!-- CHAPTER 4: VALIDATION -->
+  <div class="page-break">
+    <h1>Chapter 4: Input Validation & Security</h1>
+
+    <h2>4.1 Multi-Tier Validation Strategy</h2>
+    <p>
+      A core criterion of this academic project is robust input validation. SmartBite employs defense-in-depth: client-side validation provides instant visual ergonomics, while server-side validation acts as an impenetrable barrier against corrupted or malicious payloads.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Field / Action</th><th>Client-Side Validation (React)</th><th>Server-Side Validation (Pydantic v2)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Recipe Title</strong></td>
+          <td>Required check; min 3 chars. Highlights input in red with error text.</td>
+          <td><code>Field(..., min_length=3, max_length=120)</code>. Strips whitespace.</td>
+        </tr>
+        <tr>
+          <td><strong>Description</strong></td>
+          <td>Required check; min 10 chars.</td>
+          <td><code>Field(..., min_length=10, max_length=1000)</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Prep / Cook Times</strong></td>
+          <td>Number input restricted to > 0.</td>
+          <td><code>Field(..., ge=1, le=360)</code>. Negative values trigger HTTP 422.</td>
+        </tr>
+        <tr>
+          <td><strong>Difficulty / Dietary</strong></td>
+          <td>Constrained to valid <code>&lt;select&gt;</code> options.</td>
+          <td>Strict Python <code>Enum</code> validation. Disallowed strings fail schema.</td>
+        </tr>
+        <tr>
+          <td><strong>Ingredients Array</strong></td>
+          <td>Dynamic row validation; blocks empty ingredient name submissions.</td>
+          <td><code>List[IngredientSchema] = Field(..., min_items=1)</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>Leftover Match Input</strong></td>
+          <td>Prevents empty submissions and blocks duplicate ingredient tags.</td>
+          <td><code>Field(..., min_items=1)</code>. Sanitizes and lowercases tokens.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4.2 Automated Validation Error Payloads (HTTP 422)</h2>
+    <p>When an invalid payload is sent to the FastAPI backend, it returns structured JSON error descriptions:</p>
+    <pre>{
+  "detail": [
+    {
+      "type": "greater_than_equal",
+      "loc": ["body", "prep_time"],
+      "msg": "Input should be greater than or equal to 1",
+      "input": -5
+    }
+  ]
+}</pre>
+  </div>
+
+  <!-- CHAPTER 5: MAJOR MODULES -->
+  <div class="page-break">
+    <h1>Chapter 5: Major Modules & Leftover Matcher Algorithm</h1>
+
+    <h2>5.1 The Leftover Matching Algorithm</h2>
+    <p>
+      The core innovation of SmartBite is the algorithmic matching pipeline implemented in <code>backend/app/routes/recipes.py</code>:
+    </p>
+    <ol>
+      <li><strong>String Normalization:</strong> Input ingredient tokens are trimmed, lowercased, and mapped through a synonym dictionary (e.g., "eggs" &rarr; "egg", "rotis" &rarr; "roti", "chapatis" &rarr; "roti", "leftover rice" &rarr; "cooked rice").</li>
+      <li><strong>Database Candidate Retrieval:</strong> Active recipes matching any dietary or max-cooking-time filters are fetched.</li>
+      <li><strong>Ingredient Partitioning:</strong> For each candidate recipe, ingredients are separated into:
+        <ul>
+          <li><em>Matched Items:</em> Ingredients the user already possesses.</li>
+          <li><em>Missing Non-Staples:</em> Crucial missing items (e.g., carrots, cheese).</li>
+          <li><em>Pantry Staples:</em> Common items (salt, oil, water) assumed to be present.</li>
+        </ul>
+      </li>
+      <li><strong>Match Percentage Calculation:</strong>
+        <div class="callout">
+          <code>Match % = round((Count of Matched Core Ingredients / Total Core Ingredients) * 100)</code>
+        </div>
+      </li>
+      <li><strong>Relevance Sorting:</strong> Recipes are sorted in descending order of <code>match_percentage</code>, with secondary sorting by lowest preparation time.</li>
+    </ol>
+
+    <h2>5.2 Core Functional Modules</h2>
+    <ul>
+      <li><strong>Module 1: Leftover Matcher:</strong> Interactive tag cloud, one-click demo presets, and live ranked recipe cards.</li>
+      <li><strong>Module 2: Recipe Explorer & Modal:</strong> Step-by-step instructions, nutritional info (calories, prep time), and portion counts.</li>
+      <li><strong>Module 3: 7-Day Meal Planner:</strong> Full weekly calendar grid (Monday–Sunday) for Breakfast, Lunch, Dinner, and Snacks.</li>
+      <li><strong>Module 4: Fridge & Pantry Tracker:</strong> Visual freshness badges (red for &le; 1 day, amber for &le; 3 days) with 1-click "Match All Fridge Items".</li>
+      <li><strong>Module 5: Smart Grocery Checklist:</strong> Auto-populates missing recipe items and allows check-off upon purchase.</li>
+      <li><strong>Module 6: Environmental & Cost Savings:</strong> Dynamic counters for food waste diverted (kg), money saved (₹), and CO₂e averted.</li>
+    </ul>
+  </div>
+
+  <!-- CHAPTER 6: REST APIS -->
+  <div class="page-break">
+    <h1>Chapter 6: REST API Specifications</h1>
+
+    <h2>6.1 Endpoints Summary Table</h2>
+    <table>
+      <thead>
+        <tr><th>Method</th><th>Endpoint</th><th>Request Payload</th><th>Success Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>GET</code></td><td><code>/api/health</code></td><td>None</td><td>200 OK</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/recipes/match</code></td><td><code>{ ingredients: string[], dietary_filter?: string }</code></td><td>200 OK</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/recipes</code></td><td>Query params: <code>category</code>, <code>dietary</code>, <code>search</code></td><td>200 OK</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/recipes/{id}</code></td><td>Path parameter: <code>recipe_id</code></td><td>200 OK</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/recipes</code></td><td><code>RecipeCreate</code> JSON object</td><td>201 Created</td></tr>
+        <tr><td><code>DELETE</code></td><td><code>/api/recipes/{id}</code></td><td>Path parameter: <code>recipe_id</code></td><td>200 OK</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/pantry</code></td><td>None</td><td>200 OK</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/pantry</code></td><td><code>{ name, category, quantity, expiry_days }</code></td><td>201 Created</td></tr>
+        <tr><td><code>DELETE</code></td><td><code>/api/pantry/{id}</code></td><td>Path parameter: <code>item_id</code></td><td>200 OK</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/meal-plan</code></td><td>None</td><td>200 OK</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/meal-plan</code></td><td><code>{ day_of_week, meal_type, recipe_id, notes }</code></td><td>201 Created</td></tr>
+        <tr><td><code>DELETE</code></td><td><code>/api/meal-plan/{id}</code></td><td>Path parameter: <code>plan_id</code></td><td>200 OK</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/grocery</code></td><td>None</td><td>200 OK</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/grocery/add-missing</code></td><td><code>{ recipe_id, missing_items: string[] }</code></td><td>201 Created</td></tr>
+        <tr><td><code>PATCH</code></td><td><code>/api/grocery/{id}/toggle</code></td><td>Path parameter: <code>item_id</code></td><td>200 OK</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/analytics/waste-savings</code></td><td>None</td><td>200 OK</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/analytics/log-cooked</code></td><td><code>{ recipe_id, food_saved_kg, money_saved_inr }</code></td><td>201 Created</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6.2 Swagger OpenAPI Interactive Documentation</h2>
+    <p>
+      The FastAPI server automatically hosts interactive documentation at <code>http://127.0.0.1:8000/docs</code> using Swagger UI. Evaluators can inspect schemas, send sample HTTP requests, and verify responses directly through the browser without external tools like Postman.
+    </p>
+  </div>
+
+  <!-- CHAPTER 7: TESTING & RESULTS -->
+  <div class="page-break">
+    <h1>Chapter 7: Automated Testing & Verification</h1>
+
+    <h2>7.1 Test Strategy & Test Suite Architecture</h2>
+    <p>
+      A standalone automated test suite (<code>backend/run_tests.py</code>) was developed to execute comprehensive verification across all project modules, data persistence, validation rules, and matching logic.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Test Case ID</th><th>Component Under Test</th><th>Expected Behavior</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TC-01</td><td>System Health & Developer Metadata</td><td>Returns status 'online', confirms PRN 202401100018 and Name.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-02</td><td>Database Initialization & Seeding</td><td>Verifies 10+ realistic leftover recipes exist in SQLite.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-03</td><td>Leftover Matching Algorithm</td><td>Inputting 'cooked rice', 'onion', 'garlic' returns Fried Rice with >50% match.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-04</td><td>Dietary Preference Filtering</td><td>Filtering by 'Eggitarian' strictly excludes non-matching recipes.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-05</td><td>Validation: Empty Input Rejection</td><td>Passing empty ingredient array raises Pydantic ValidationError (HTTP 422).</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-06</td><td>Validation: Negative Field Values</td><td>Negative prep time and short title blocked by schema validation.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-07</td><td>Recipe Creation CRUD</td><td>Creates custom Leftover Rice Kheer and verifies persistence in SQLite.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-08</td><td>7-Day Meal Planner Lifecycle</td><td>Schedules Friday dinner, retrieves calendar, and deletes entry.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-09</td><td>Pantry Inventory Management</td><td>Adds leftover paneer, verifies expiry calculation, and removes item.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-10</td><td>Smart Grocery Auto-Add & Toggle</td><td>Auto-adds missing ingredients from recipe and toggles bought status.</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>TC-11</td><td>Waste & Cost Savings Analytics</td><td>Logs cooked meal; verifies kg saved, money saved (INR), and CO₂e computations.</td><td><span class="badge-pass">PASS</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2>7.2 Test Execution Output Log</h2>
+    <pre>=================================================================
+  SmartBite Full-Stack Automated Test Suite
+  Student: Nikita Sharad Pawar | PRN: 202401100018
+=================================================================
+[PASS] 1. Database initialized & schema verified.
+[PASS] 2. Seeded Recipes Loaded: 11 recipes ready in database.
+[PASS] 3. Leftover Matcher Algorithm: Matched 'Indo-Chinese Fried Rice' (60% match)
+       -> Matched items: ['cooked rice', 'onion', 'garlic']
+       -> Missing items: ['carrot', 'green chilli']
+[PASS] 4. Dietary Preference Filtering: Successfully isolated 1 Eggitarian matches.
+[PASS] 5. Schema Validation: Empty ingredients list properly rejected by Pydantic.
+[PASS] 6. Schema Validation: Malformed input correctly caught.
+[PASS] 7. Custom Recipe Creation & DB Insert: Recipe #12 created.
+[PASS] 8. 7-Day Meal Planner Lifecycle: Schedule -> Fetch -> Remove verified.
+[PASS] 9. Pantry Leftovers Inventory: Add -> Expiry -> Remove verified.
+[PASS] 10. Smart Missing Ingredients: Auto-add & toggle verified.
+[PASS] 11. Waste & Financial Savings Tracker:
+       -> Total Meals Rescued: 5 | Food Saved: 2.2 kg | Money Saved: INR 615.0
+=================================================================
+  ALL 11/11 AUTOMATED TESTS PASSED WITH 100% SUCCESS! [OK]
+=================================================================</pre>
+  </div>
+
+  <!-- CHAPTER 8: CONCLUSION & VIVA -->
+  <div class="page-break">
+    <h1>Chapter 8: Conclusion & Teacher Viva Preparation</h1>
+
+    <h2>8.1 Conclusion</h2>
+    <p>
+      The <strong>SmartBite</strong> full-stack mini-project demonstrates that modern web technologies (React, FastAPI, SQLite) can be successfully integrated to address a pressing socio-ecological problem: household food waste. By providing an ergonomic reverse recipe matcher, 7-day meal planning, fridge inventory tracking, and tangible savings metrics, the application shifts home cooking from a source of waste to an intentional, sustainable habit.
+    </p>
+
+    <h2>8.2 Oral Presentation & Viva Guide (For Student Demonstration)</h2>
+    <div class="callout">
+      <div class="callout-title">Live Demonstration Checklist for Subject Teacher:</div>
+      1. <strong>Problem Statement Pitch (30 secs):</strong> Explain the 40% household food waste statistic and how SmartBite reverses recipe search.<br>
+      2. <strong>Leftover Matcher Demo (45 secs):</strong> Click "Leftover Rice Demo" preset; show the 60–100% matched recipes and how missing ingredients are identified.<br>
+      3. <strong>Missing Items to Grocery (20 secs):</strong> Click "+ Grocery" to show auto-population into the checklist.<br>
+      4. <strong>Form Validation Demo (30 secs):</strong> Open "Add Leftover Recipe", hit Submit with empty fields to show client validation, then click "Fill Sample Data" to show successful database insertion.<br>
+      5. <strong>Weekly Meal Planner & Impact Tracker (30 secs):</strong> Show the 7-day calendar and the live kg food saved / INR savings counter.
+    </div>
+
+    <h2>8.3 Model Answers to Examiner Questions</h2>
+    <p><strong>Q1: Why did you use SQLite instead of MongoDB?</strong><br>
+    <em>"SQLite is an embedded, zero-configuration relational database stored directly inside the project directory. It requires zero server setup for the examiner, supports ACID transactions, and enforces foreign key cascading."</em></p>
+
+    <p><strong>Q2: How did you implement two-tier validation?</strong><br>
+    <em>"Client-side validation in React provides immediate feedback on empty inputs and non-negative values. Server-side validation uses Pydantic schemas in FastAPI to enforce exact field ranges, valid Enums, and automatic HTTP 422 error responses."</em></p>
+
+    <p><strong>Q3: How does the ingredient matching algorithm work?</strong><br>
+    <em>"The algorithm normalizes input strings, handles plurals and synonyms (e.g. roti/chapati), separates core leftovers from common pantry staples (salt, oil), and computes percentage match accuracy."</em></p>
+  </div>
+
+</body>
+</html>
