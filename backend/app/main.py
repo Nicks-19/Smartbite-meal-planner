@@ -52,7 +52,10 @@ def health_check():
     }
 
 # Mount static frontend build if present
-frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+frontend_dist = os.path.join(root_dir, "dist")
+if not os.path.exists(frontend_dist):
+    frontend_dist = os.path.join(root_dir, "frontend", "dist")
 if os.path.exists(frontend_dist):
     app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dist, "assets")), name="assets")
 
