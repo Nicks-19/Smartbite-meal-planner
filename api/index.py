@@ -16,3 +16,4 @@ try:
     seed_database()
 except Exception as e:
     print(f"[Vercel Init Warning]: {e}")
+
